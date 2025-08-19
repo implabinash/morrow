@@ -3,7 +3,7 @@ const groups = [
 		title: "Explore",
 		links: [
 			{
-				name: "Getting Started",
+				name: "Get Started",
 				href: "/hints",
 				image: "star",
 				external: false

@@ -43,6 +43,7 @@
 					? "warning"
 					: "error"}
 			text={props.difficulty.charAt(0).toUpperCase() + props.difficulty.slice(1)}
+			leftIcon={ArrowRight}
 		/>
 
 		<Badge type="default" text={props.category} />

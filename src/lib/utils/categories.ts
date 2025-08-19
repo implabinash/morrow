@@ -18,7 +18,7 @@ export const categories = [
 	{ name: "DeFi", icon: CircleDollarSign },
 	{ name: "DePin", icon: Waypoints },
 	{ name: "NFTs", icon: Image },
-	{ name: "Developer Tooling", icon: Hammer },
+	{ name: "Dev Tools", icon: Hammer },
 	{ name: "Infrastructure", icon: Server },
 	{ name: "Social", icon: MessageSquare },
 	{ name: "Gaming", icon: Gamepad2 },

@@ -1,49 +1,86 @@
 <script lang="ts">
-	import { Leaf, Citrus, TriangleAlert, ChevronDown, ChevronUp } from "@lucide/svelte";
+	import { ChevronDown, ChevronUp } from "@lucide/svelte";
 
 	import { categories, type Category } from "$lib/utils/categories";
+	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
+
 	import Card from "$lib/components/Card.svelte";
 
-	let difficulty: "easy" | "medium" | "hard" | undefined = $state();
+	let difficulty: Difficulties | undefined = $state();
+	let isDifficultyOpen: boolean = $state(false);
+
 	let category: Category = $state("All Categories");
-	let isOpen: boolean = $state(false);
+	let isCategoryOpen: boolean = $state(false);
 </script>
 
 <main class="flex h-screen flex-col px-0 pt-16 sm:px-4 lg:flex-row">
 	<aside
-		class="flex min-w-72 flex-col space-y-6 border-r border-r-neutral-border p-6 md:flex-row md:gap-10 lg:h-full lg:flex-col lg:gap-6 lg:p-6"
+		class="flex min-w-72 gap-4 border-r border-r-neutral-border p-6 pb-3 md:flex-row md:gap-10 lg:h-full lg:flex-col lg:space-y-6 lg:p-6"
 	>
-		<div class="space-y-4 text-caption-bold text-subtext-color">
+		<div class="mb-0 space-y-3 text-caption-bold text-subtext-color">
 			<p>Difficulty</p>
 
-			<div class="flex w-fit items-center rounded-md bg-neutral-100 p-0.5">
-				<button
-					class={`flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5 hover:text-black ${difficulty === "easy" ? "bg-white text-black" : ""}`}
-					onclick={() => {
-						difficulty = difficulty === "easy" ? undefined : "easy";
-					}}><Leaf size="14px" /> Easy</button
-				>
+			<div class="mb-0 hidden w-fit items-center rounded-md bg-neutral-100 p-0.5 text-body sm:flex">
+				{#each difficulties as d (d.name)}
+					<button
+						class={`flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5 hover:text-black ${difficulty === d.name ? "bg-white text-black" : ""}`}
+						onclick={() => {
+							difficulty = difficulty === d.name ? undefined : d.name;
+						}}><d.icon size="14px" /> {d.name.charAt(0).toUpperCase() + d.name.slice(1)}</button
+					>
+				{/each}
+			</div>
 
+			<div class="relative block text-caption sm:hidden sm:text-body">
 				<button
-					class={`flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5 hover:text-black ${difficulty === "medium" ? "bg-white text-black" : ""}`}
+					class="flex cursor-pointer items-center gap-2 rounded-md border border-neutral-border bg-neutral-100 px-3 py-1.5 transition-all duration-200"
 					onclick={() => {
-						difficulty = difficulty === "medium" ? undefined : "medium";
-					}}><Citrus size="14px" /> Medium</button
+						isDifficultyOpen = !isDifficultyOpen;
+					}}
 				>
+					{#if difficulty}
+						{@const Icon = difficulties.find((c) => c.name === difficulty)?.icon}
+						<Icon size="14px" />
 
-				<button
-					class={`flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5 hover:text-black ${difficulty === "hard" ? "bg-white text-black" : ""}`}
-					onclick={() => {
-						difficulty = difficulty === "hard" ? undefined : "hard";
-					}}><TriangleAlert size="14px" /> Hard</button
-				>
+						{@const Difficulty = difficulties.find((c) => c.name === difficulty)?.name ?? ""}
+
+						{Difficulty?.charAt(0).toUpperCase() + Difficulty?.slice(1)}
+					{:else}
+						Select
+					{/if}
+
+					{#if isDifficultyOpen}
+						<ChevronUp size="16px" />
+					{:else}
+						<ChevronDown size="16px" />
+					{/if}
+				</button>
+
+				{#if isDifficultyOpen}
+					<ul class="absolute z-10 min-w-24 rounded-md border border-neutral-border bg-white">
+						{#each difficulties as d (d.name)}
+							<li>
+								<button
+									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${difficulty === d.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
+									onclick={() => {
+										difficulty = difficulty === d.name ? undefined : d.name;
+										isDifficultyOpen = !isDifficultyOpen;
+									}}
+								>
+									<d.icon size="14px" />
+									{d.name.charAt(0).toUpperCase() + d.name.slice(1)}</button
+								>
+							</li>
+						{/each}
+					</ul>
+				{/if}
 			</div>
 		</div>
 
-		<div class="hidden space-y-3 text-caption-bold text-subtext-color lg:block">
+		<div class="space-y-3 text-caption-bold text-subtext-color">
 			<p>Categories</p>
 
-			<ul>
+			<ul class="hidden lg:block">
 				{#each categories as c (c.name)}
 					<li>
 						<button
@@ -58,16 +95,12 @@
 					</li>
 				{/each}
 			</ul>
-		</div>
 
-		<div class="block space-y-3 text-caption-bold text-subtext-color lg:hidden">
-			<p>Categories</p>
-
-			<div class="relative">
+			<div class="relative block text-caption sm:text-body lg:hidden">
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-md border border-neutral-border bg-neutral-100 px-3 py-1.5 text-body transition-all duration-200"
+					class="flex cursor-pointer items-center gap-2 rounded-md border border-neutral-border bg-neutral-100 px-3 py-1.5 transition-all duration-200"
 					onclick={() => {
-						isOpen = !isOpen;
+						isCategoryOpen = !isCategoryOpen;
 					}}
 				>
 					{#if categories.find((c) => c.name === category)}
@@ -77,22 +110,22 @@
 
 					{categories.find((c) => c.name === category)?.name}
 
-					{#if isOpen}
+					{#if isCategoryOpen}
 						<ChevronUp size="16px" />
 					{:else}
 						<ChevronDown size="16px" />
 					{/if}
 				</button>
 
-				{#if isOpen}
-					<ul class="absolute z-10 min-w-44 border border-neutral-border bg-white">
+				{#if isCategoryOpen}
+					<ul class="absolute z-10 min-w-44 rounded-md border border-neutral-border bg-white">
 						{#each categories as c (c.name)}
 							<li>
 								<button
-									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body hover:bg-neutral-100 ${category === c.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
+									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${category === c.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 									onclick={() => {
 										category = category === c.name ? "All Categories" : c.name;
-										isOpen = !isOpen;
+										isCategoryOpen = !isCategoryOpen;
 									}}
 								>
 									<c.icon size="16px" />

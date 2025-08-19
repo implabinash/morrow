@@ -12,7 +12,7 @@
 	<a href="/" class="flex items-end gap-2 leading-[1.2]">
 		<img src="/images/logo/logo.svg" alt="Morrow" class="size-7 md:size-5" />
 
-		<p class="hidden font-medium md:block">
+		<p class="hidden font-medium sm:block">
 			Morrow <span class:hidden={!pathName} class="text-neutral-400">/ {pathName}</span>
 		</p>
 	</a>
@@ -22,13 +22,6 @@
 			<button
 				class="flex items-center gap-2 rounded-md bg-brand-600 py-2 pr-4 pl-3 text-caption-bold text-white hover:bg-brand-500 active:bg-brand-600"
 				><Plus size="16px" /> New Hint</button
-			>
-		{/if}
-
-		{#if pathName === "tools"}
-			<button
-				class="flex items-center gap-2 rounded-md bg-brand-600 py-2 pr-4 pl-3 text-caption-bold text-white hover:bg-brand-500 active:bg-brand-600"
-				><Plus size="16px" /> New Tool</button
 			>
 		{/if}
 
