@@ -7,7 +7,7 @@
 </script>
 
 <header
-	class="fixed z-10 flex h-16 w-screen items-center justify-between border-b border-b-neutral-border bg-white pr-5 pl-3 md:pr-10 md:pl-6"
+	class="fixed flex h-16 w-screen items-center justify-between border-b border-b-neutral-border bg-white pr-5 pl-3 md:pr-10 md:pl-6"
 >
 	<a href="/" class="flex items-end gap-2 leading-[1.2]">
 		<img src="/images/logo/logo.svg" alt="Morrow" class="size-7 md:size-5" />
