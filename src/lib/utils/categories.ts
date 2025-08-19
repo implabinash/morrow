@@ -13,17 +13,17 @@ import {
 } from "@lucide/svelte";
 
 export const categories = [
-	{ name: "All Categories", icon: Shapes },
-	{ name: "Payments", icon: CreditCard },
-	{ name: "DeFi", icon: CircleDollarSign },
-	{ name: "DePin", icon: Waypoints },
-	{ name: "NFTs", icon: Image },
-	{ name: "Dev Tools", icon: Hammer },
-	{ name: "Infrastructure", icon: Server },
-	{ name: "Social", icon: MessageSquare },
-	{ name: "Gaming", icon: Gamepad2 },
-	{ name: "AI", icon: Brain },
-	{ name: "DeSci", icon: Microscope }
+	{ id: "all", name: "All Categories", icon: Shapes },
+	{ id: "payments", name: "Payments", icon: CreditCard },
+	{ id: "defi", name: "DeFi", icon: CircleDollarSign },
+	{ id: "depin", name: "DePin", icon: Waypoints },
+	{ id: "nfts", name: "NFTs", icon: Image },
+	{ id: "devtools", name: "Dev Tools", icon: Hammer },
+	{ id: "infra", name: "Infrastructure", icon: Server },
+	{ id: "social", name: "Social", icon: MessageSquare },
+	{ id: "gaming", name: "Gaming", icon: Gamepad2 },
+	{ id: "ai", name: "AI", icon: Brain },
+	{ id: "desci", name: "DeSci", icon: Microscope }
 ] as const;
 
-export type Category = (typeof categories)[number]["name"];
+export type Category = (typeof categories)[number]["id"];

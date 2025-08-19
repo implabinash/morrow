@@ -9,7 +9,7 @@
 	let difficulty: Difficulties | undefined = $state();
 	let isDifficultyOpen: boolean = $state(false);
 
-	let category: Category = $state("All Categories");
+	let category: Category = $state("all");
 	let isCategoryOpen: boolean = $state(false);
 </script>
 
@@ -84,9 +84,9 @@
 				{#each categories as c (c.name)}
 					<li>
 						<button
-							class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body hover:bg-neutral-100 ${category === c.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
+							class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body hover:bg-neutral-100 ${category === c.id ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 							onclick={() => {
-								category = category === c.name ? "All Categories" : c.name;
+								category = category === c.id ? "all" : c.id;
 							}}
 						>
 							<c.icon size="16px" />
@@ -103,12 +103,12 @@
 						isCategoryOpen = !isCategoryOpen;
 					}}
 				>
-					{#if categories.find((c) => c.name === category)}
-						{@const Icon = categories.find((c) => c.name === category)?.icon}
+					{#if categories.find((c) => c.id === category)}
+						{@const Icon = categories.find((c) => c.id === category)?.icon}
 						<Icon size="16px" />
 					{/if}
 
-					{categories.find((c) => c.name === category)?.name}
+					{categories.find((c) => c.id === category)?.name}
 
 					{#if isCategoryOpen}
 						<ChevronUp size="16px" />
@@ -122,9 +122,9 @@
 						{#each categories as c (c.name)}
 							<li>
 								<button
-									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${category === c.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
+									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${category === c.id ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 									onclick={() => {
-										category = category === c.name ? "All Categories" : c.name;
+										category = category === c.id ? "all" : c.id;
 										isCategoryOpen = !isCategoryOpen;
 									}}
 								>
@@ -146,8 +146,8 @@
 			name="Steve Jobs"
 			image="1"
 			thumbnail="1"
-			difficulty="easy"
-			category="DeSci"
+			difficulty="hard"
+			category="depin"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -157,7 +157,7 @@
 			image="1"
 			thumbnail="1"
 			difficulty="easy"
-			category="DeSci"
+			category="desci"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -167,7 +167,17 @@
 			image="1"
 			thumbnail="1"
 			difficulty="easy"
-			category="DeSci"
+			category="ai"
+			title="Decentralized Research Publishing"
+			description="Build a decentralized platform for academic research publishing using blockchain technology"
+			href="/hints"
+		/>
+		<Card
+			name="Steve Jobs"
+			image="1"
+			thumbnail="1"
+			difficulty="medium"
+			category="gaming"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -177,7 +187,7 @@
 			image="1"
 			thumbnail="1"
 			difficulty="easy"
-			category="DeSci"
+			category="infra"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -187,7 +197,7 @@
 			image="1"
 			thumbnail="1"
 			difficulty="easy"
-			category="DeSci"
+			category="all"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -196,8 +206,8 @@
 			name="Steve Jobs"
 			image="1"
 			thumbnail="1"
-			difficulty="easy"
-			category="DeSci"
+			difficulty="medium"
+			category="payments"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"
@@ -206,18 +216,8 @@
 			name="Steve Jobs"
 			image="1"
 			thumbnail="1"
-			difficulty="easy"
-			category="DeSci"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="easy"
-			category="DeSci"
+			difficulty="hard"
+			category="devtools"
 			title="Decentralized Research Publishing"
 			description="Build a decentralized platform for academic research publishing using blockchain technology"
 			href="/hints"

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { ArrowRight } from "@lucide/svelte";
 
-	import type { Category } from "$lib/utils/categories";
+	import { categories, type Category } from "$lib/utils/categories";
 	import Badge from "./Badge.svelte";
+	import { difficulties } from "$lib/utils/difficulty";
 
 	type Props = {
 		name: string;
@@ -43,10 +44,14 @@
 					? "warning"
 					: "error"}
 			text={props.difficulty.charAt(0).toUpperCase() + props.difficulty.slice(1)}
-			leftIcon={ArrowRight}
+			leftIcon={difficulties.find((d) => d.name === props.difficulty)?.icon}
 		/>
 
-		<Badge type="default" text={props.category} />
+		<Badge
+			type="default"
+			text={categories.find((c) => c.id === props.category)?.name ?? ""}
+			leftIcon={categories.find((c) => c.id === props.category)?.icon}
+		/>
 	</div>
 
 	<h2 class="text-heading-3">{props.title}</h2>
