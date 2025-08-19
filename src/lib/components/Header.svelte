@@ -12,8 +12,13 @@
 	<a href="/" class="flex items-end gap-2 leading-[1.2]">
 		<img src="/images/logo/logo.svg" alt="Morrow" class="size-7 md:size-5" />
 
-		<p class="hidden font-medium sm:block">
-			Morrow <span class:hidden={!pathName} class="text-neutral-400">/ {pathName}</span>
+		<p class="hidden font-semibold sm:block">
+			Morrow <span class:hidden={!pathName} class="text-body-bold text-neutral-400"
+				>/ {pathName
+					.split("-")
+					.map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+					.join(" ")}</span
+			>
 		</p>
 	</a>
 

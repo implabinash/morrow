@@ -10,7 +10,7 @@
 	let category: Category = $state("all");
 	let isCategoryOpen: boolean = $state(false);
 
-	let resource: string = $state("ok");
+	let resource: string = $state("");
 	let resources: { id: number; value: string }[] = $state([]);
 
 	const handleResourceAdd = () => {
