@@ -19,9 +19,10 @@
 
 	<nav class="flex gap-3">
 		{#if pathName === "hints"}
-			<button
+			<a
+				href="/new-hint"
 				class="flex items-center gap-2 rounded-md bg-brand-600 py-2 pr-4 pl-3 text-caption-bold text-white hover:bg-brand-500 active:bg-brand-600"
-				><Plus size="16px" /> New Hint</button
+				><Plus size="16px" /> New Hint</a
 			>
 		{/if}
 

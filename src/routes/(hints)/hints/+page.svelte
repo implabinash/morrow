@@ -140,7 +140,7 @@
 	</aside>
 
 	<section
-		class="grid flex-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-2 lg:overflow-y-auto xl:grid-cols-3 2xl:grid-cols-4 2xl:gap-12"
+		class="grid flex-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-2 lg:overflow-y-auto xl:grid-cols-3"
 	>
 		<Card
 			name="Steve Jobs"
