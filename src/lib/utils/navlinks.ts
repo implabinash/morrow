@@ -3,13 +3,19 @@ const groups = [
 		title: "Explore",
 		links: [
 			{
-				name: "Hints",
+				name: "Getting Started",
+				href: "/hints",
+				image: "star",
+				external: false
+			},
+			{
+				name: "Explore Hints",
 				href: "/hints",
 				image: "bulb",
 				external: false
 			},
 			{
-				name: "Tools",
+				name: "Discover Tools",
 				href: "/",
 				image: "tools",
 				external: false
@@ -26,13 +32,13 @@ const groups = [
 		title: "Morrow",
 		links: [
 			{
-				name: "About",
+				name: "About Us",
 				href: "/",
 				image: "about",
 				external: false
 			},
 			{
-				name: "Contact",
+				name: "Contact Us",
 				href: "/",
 				image: "contact",
 				external: false
