@@ -36,8 +36,8 @@
 
 <Seo title="Submit a New Hint" />
 
-<main class="py-36">
-	<Wrapper class="rounded-md border border-neutral-border">
+<main class="py-24 sm:py-36">
+	<Wrapper class="sm:rounded-md sm:border sm:border-neutral-border sm:shadow">
 		<section class="space-y-2">
 			<h1 class="text-heading-2">Create New Hint</h1>
 
@@ -137,10 +137,10 @@
 				<div class="flex flex-col gap-1">
 					<p class="text-body-bold">Difficulty</p>
 
-					<div class="grid grid-cols-3 gap-4">
+					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 						{#each difficulties as d (d.name)}
 							<label
-								class={`flex cursor-pointer items-center gap-4 rounded-md border  px-3 py-2 text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
+								class={`flex cursor-pointer items-center gap-4 rounded-md border  px-3 py-2 text-caption sm:text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
 							>
 								<input
 									type="radio"
@@ -252,7 +252,7 @@
 						<div class="space-y-1">
 							<label
 								for="profile"
-								class="flex w-fit cursor-pointer items-center gap-2 rounded-md border border-neutral-border py-1.5 pr-3 pl-2 text-body-bold hover:bg-neutral-50 active:bg-white"
+								class="flex w-fit cursor-pointer items-center gap-2 rounded-md border border-neutral-border py-1.5 pr-3 pl-2 text-caption-bold hover:bg-neutral-50 active:bg-white sm:text-body-bold"
 								><Upload size="16px" /> Upload
 								<input type="file" class="hidden" id="profile" name="profile" required /></label
 							>
