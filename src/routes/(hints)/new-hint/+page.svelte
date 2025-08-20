@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { ChevronDown, ChevronUp, Link, Plus, Trash, Upload } from "@lucide/svelte";
+	import { ChevronDown, ChevronUp, Link, Plus, Trash } from "@lucide/svelte";
+
+	import type { ActionData } from "./$types";
+	import { enhance } from "$app/forms";
 
 	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
 	import { categories, type Category } from "$lib/utils/categories";
@@ -7,17 +10,41 @@
 	import Wrapper from "$lib/components/Wrapper.svelte";
 	import Seo from "$lib/components/Seo.svelte";
 
-	let difficulty: Difficulties | undefined = $state();
+	let { form }: { form: ActionData } = $props();
 
-	let category: Category = $state("all");
+	let difficulty: Difficulties | undefined = $state(
+		difficulties.find((d) => d.name === form?.data?.["difficulty"])?.name || undefined
+	);
+
+	let category: Category = $state(
+		categories.find((c) => c.id === form?.data?.["category"])?.id || "all"
+	);
 	let isCategoryOpen: boolean = $state(false);
 
 	let resource: string = $state("");
 	let resources: { id: number; value: string }[] = $state([]);
 
+	$effect(() => {
+		if (form?.data?.["resources"] && typeof form?.data?.["resources"] === "string") {
+			resources = form.data["resources"]
+				.split(",")
+				.map((value, index) => ({ id: index, value: value.trim() }))
+				.filter((r) => r.value !== "");
+		}
+	});
+
+	$effect(() => {
+		if (form?.success) {
+			category = "all";
+			difficulty = undefined;
+			resources = [];
+			resource = "";
+		}
+	});
+
 	const handleResourceAdd = () => {
 		if (resource.trim() !== "") {
-			resources?.push({ id: resources?.length, value: resource.trim() });
+			resources.push({ id: resources?.length, value: resource.trim() });
 			resource = "";
 		}
 	};
@@ -44,7 +71,7 @@
 			<p class="text-body text-subtext-color">Share your idea with the community</p>
 		</section>
 
-		<form class="flex flex-col gap-12">
+		<form class="flex flex-col gap-12" method="POST" use:enhance>
 			<section class="space-y-6">
 				<div class="flex flex-col gap-1">
 					<label for="title" class="flex flex-col gap-1 text-body-bold"
@@ -54,13 +81,16 @@
 							type="text"
 							id="title"
 							name="title"
+							value={form?.data?.["title"]}
 							placeholder="Enter title"
 							class="rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
 							required
 						/>
 					</label>
 
-					<!-- <p class="text-caption text-error-600">Give your hint a clear, descriptive title</p> -->
+					{#if form?.error?.fieldErrors.title}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.title}</p>
+					{/if}
 				</div>
 
 				<div class="flex flex-col gap-1">
@@ -70,13 +100,16 @@
 						<textarea
 							id="description"
 							name="description"
+							value={form?.data?.["description"]?.toString()}
 							placeholder="Enter description"
 							class="min-h-24 rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
 							required
 						></textarea>
 					</label>
 
-					<!-- <p class="text-caption text-subtext-color">Describe your idea in detail</p> -->
+					{#if form?.error?.fieldErrors.description}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.description}</p>
+					{/if}
 				</div>
 
 				<div class="flex flex-col gap-1">
@@ -129,9 +162,9 @@
 						{/if}
 					</div>
 
-					<!-- <p class="text-caption text-subtext-color">
-						Choose the most relevant category for your hint
-					</p> -->
+					{#if form?.error?.fieldErrors.category}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.category}</p>
+					{/if}
 				</div>
 
 				<div class="flex flex-col gap-1">
@@ -140,14 +173,14 @@
 					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 						{#each difficulties as d (d.name)}
 							<label
-								class={`flex cursor-pointer items-center gap-4 rounded-md border  px-3 py-2 text-caption sm:text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
+								class={`relative -z-10 flex cursor-pointer items-center gap-4 rounded-md border px-3 py-2 text-caption sm:text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
 							>
 								<input
 									type="radio"
 									name="difficulty"
 									value={d.name}
 									bind:group={difficulty}
-									class="hidden"
+									class="absolute opacity-0"
 									required
 								/>
 
@@ -174,6 +207,10 @@
 							</label>
 						{/each}
 					</div>
+
+					{#if form?.error?.fieldErrors.difficulty}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.difficulty}</p>
+					{/if}
 				</div>
 
 				<div class="flex flex-col gap-1">
@@ -200,6 +237,10 @@
 							>
 						</div>
 
+						{#if form?.error?.fieldErrors.resources}
+							<p class="text-caption text-error-600">{form.error.fieldErrors.resources}</p>
+						{/if}
+
 						<div class="space-y-1.5">
 							{#each resources as r (r.id)}
 								<div class="flex items-center gap-2">
@@ -222,10 +263,6 @@
 							{/each}
 						</div>
 					</label>
-
-					<!-- <p class="text-caption text-subtext-color">
-						Add links to relevant papers, datasets, or other resources
-					</p> -->
 				</div>
 			</section>
 
@@ -239,7 +276,7 @@
 					</p>
 				</div>
 
-				<div class="mb-10 space-y-2">
+				<!-- <div class="mb-10 space-y-2">
 					<p class="text-body-bold">Publisher Avatar</p>
 
 					<div class="flex items-center gap-4">
@@ -262,7 +299,7 @@
 							</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="flex flex-col gap-1">
 					<label for="name" class="flex flex-col gap-1 text-body-bold"
@@ -272,13 +309,16 @@
 							type="text"
 							id="name"
 							name="name"
+							value={form?.data?.["name"]}
 							placeholder="Enter name"
 							class="rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
 							required
 						/>
 					</label>
 
-					<!-- <p class="text-caption text-subtext-color">Enter your full name</p> -->
+					{#if form?.error?.fieldErrors.name}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.name}</p>
+					{/if}
 				</div>
 
 				<div class="flex flex-col gap-1">
@@ -289,13 +329,16 @@
 							type="url"
 							id="twitter"
 							name="twitter"
+							value={form?.data?.["twitter"]}
 							placeholder="Enter twitter handle"
 							class="rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
 							required
 						/>
 					</label>
 
-					<!-- <p class="text-caption text-subtext-color">Enter your full name</p> -->
+					{#if form?.error?.fieldErrors.twitter}
+						<p class="text-caption text-error-600">{form.error.fieldErrors.twitter}</p>
+					{/if}
 				</div>
 			</section>
 

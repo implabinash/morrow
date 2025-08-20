@@ -1,5 +1,5 @@
-import { randomUUID } from "crypto";
 import { sql } from "drizzle-orm";
+import { randomUUID } from "crypto";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 import { categories } from "$lib/utils/categories";
@@ -31,7 +31,7 @@ export const hintsTable = sqliteTable("hint", {
 
 	resources: text("resources").notNull(),
 
-	avatar: text("avatar"),
+	// avatar: text("avatar"),
 	name: text("name").notNull(),
 	twitter: text("twitter"),
 
