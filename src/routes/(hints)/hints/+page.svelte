@@ -5,6 +5,7 @@
 	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
 
 	import Card from "$lib/components/Card.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 
 	let difficulty: Difficulties | undefined = $state();
 	let isDifficultyOpen: boolean = $state(false);
@@ -12,6 +13,8 @@
 	let category: Category = $state("all");
 	let isCategoryOpen: boolean = $state(false);
 </script>
+
+<Seo title="Explore Hints" />
 
 <main class="flex h-screen flex-col px-0 pt-16 sm:px-4 lg:flex-row">
 	<aside

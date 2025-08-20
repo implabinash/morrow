@@ -5,8 +5,31 @@
 </script>
 
 <svelte:head>
-	<title>Morrow: A hint from tomorrow</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Morrow - A Hint from Tomorrow</title>
+	<meta
+		name="description"
+		content="Morrow is a community-driven hub for builders in the Polkadot ecosystem. Discover hints, tools, and roadmaps to bring your ideas to life."
+	/>
+	<meta
+		name="keywords"
+		content="Morrow, Polkadot builders, Web3 ideas, Polkadot tools, Polkadot roadmaps, Web3 development, hints for builders, blockchain startup ideas"
+	/>
+
+	<meta property="og:title" content="Morrow - A Hint from Tomorrow" />
+	<meta
+		property="og:description"
+		content="Morrow helps builders and founders in the Polkadot ecosystem. Explore hints, curated tools, and guided roadmaps to bring ideas to life."
+	/>
+	<!-- <meta property="og:image" content="https://morrow.xyz/og-image.png" /> -->
+	<!-- <meta property="og:url" content="https://morrow.xyz" /> -->
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Morrow - A Hint from Tomorrow" />
+	<meta
+		name="twitter:description"
+		content="Discover, share, and explore hints, tools, and roadmaps for building on Polkadot. Morrow is your launchpad for Web3 ideas and innovation."
+	/>
+	<!-- <meta name="twitter:image" content="https://morrow.xyz/twitter-card.png" /> -->
 </svelte:head>
 
 <main class="mx-auto max-w-170 space-y-10 px-10 py-36">

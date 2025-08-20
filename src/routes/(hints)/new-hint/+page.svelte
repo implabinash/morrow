@@ -2,8 +2,10 @@
 	import { ChevronDown, ChevronUp, Link, Plus, Trash, Upload } from "@lucide/svelte";
 
 	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
-	import Wrapper from "$lib/components/Wrapper.svelte";
 	import { categories, type Category } from "$lib/utils/categories";
+
+	import Wrapper from "$lib/components/Wrapper.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 
 	let difficulty: Difficulties | undefined = $state();
 
@@ -31,6 +33,8 @@
 		resources = resources.filter((r) => r.id !== id);
 	}
 </script>
+
+<Seo title="Submit a New Hint" />
 
 <main class="py-36">
 	<Wrapper class="rounded-md border border-neutral-border">
