@@ -4,7 +4,7 @@ const groups = [
 		links: [
 			{
 				name: "Get Started",
-				href: "/hints",
+				href: "/get-started",
 				image: "star",
 				external: false
 			},
