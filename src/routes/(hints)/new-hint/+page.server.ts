@@ -11,8 +11,6 @@ export const actions = {
 	default: async ({ request }) => {
 		const formData = Object.fromEntries(await request.formData());
 
-		console.log(formData);
-
 		const result = newHintSchema.safeParse(formData);
 
 		if (!result.success) {
@@ -23,6 +21,8 @@ export const actions = {
 		const description = result.data.description.trim();
 		const publisherName = result.data.name.trim();
 		const publisherTwitter = result.data.twitter?.trim() ?? "";
+
+		let hintId = "";
 
 		try {
 			const [hint] = await db
@@ -39,11 +39,13 @@ export const actions = {
 				.returning({ hintId: hintsTable.id });
 
 			if (hint.hintId) {
-				throw redirect(303, `/${hint.hintId}`);
+				hintId = hint.hintId;
 			}
 		} catch (e) {
 			console.error("Insert failed:", e);
 			throw error(500, "Something went wrong! Please Try again.");
 		}
+
+		throw redirect(303, `/hints/${hintId}`);
 	}
 } satisfies Actions;
