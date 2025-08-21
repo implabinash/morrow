@@ -74,8 +74,10 @@
 		<form class="flex flex-col gap-12" method="POST" use:enhance>
 			<section class="space-y-6">
 				<div class="flex flex-col gap-1">
-					<label for="title" class="flex flex-col gap-1 text-body-bold"
-						>Title
+					<label for="title" class="flex flex-col gap-1 text-body-bold">
+						<span class="flex gap-0.5">
+							Title <span class="text-error-600" aria-hidden="true">*</span>
+						</span>
 
 						<input
 							type="text"
@@ -95,7 +97,9 @@
 
 				<div class="flex flex-col gap-1">
 					<label for="description" class="flex flex-col gap-1 text-body-bold"
-						>Description
+						><span class="flex gap-0.5">
+							Description <span class="text-error-600" aria-hidden="true">*</span>
+						</span>
 
 						<textarea
 							id="description"
@@ -113,9 +117,11 @@
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<p class="text-body-bold">Category</p>
+					<p class="text-body-bold">
+						Category <span class="text-error-600" aria-hidden="true">*</span>
+					</p>
 
-					<input type="hidden" name="category" value={category} />
+					<input type="hidden" name="category" value={category} required />
 
 					<div class="relative text-caption sm:text-body">
 						<button
@@ -143,7 +149,7 @@
 
 						{#if isCategoryOpen}
 							<div
-								class="absolute w-full min-w-44 rounded-md border border-neutral-border bg-white"
+								class="absolute z-10 w-full min-w-44 rounded-md border border-neutral-border bg-white"
 							>
 								{#each categories as c (c.id)}
 									<button
@@ -168,12 +174,14 @@
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<p class="text-body-bold">Difficulty</p>
+					<p class="text-body-bold">
+						Difficulty <span class="text-error-600" aria-hidden="true">*</span>
+					</p>
 
-					<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+					<div class="z-0 grid grid-cols-2 gap-4 sm:grid-cols-3">
 						{#each difficulties as d (d.name)}
 							<label
-								class={`relative -z-10 flex cursor-pointer items-center gap-4 rounded-md border px-3 py-2 text-caption sm:text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
+								class={`relative flex cursor-pointer items-center gap-4 rounded-md border px-3 py-2 text-caption sm:text-body ${difficulty === d.name ? "border-brand-200 bg-brand-50 hover:bg-brand-50" : "border-neutral-border  hover:bg-neutral-50"}`}
 							>
 								<input
 									type="radio"
@@ -214,10 +222,12 @@
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<input type="hidden" name="resources" value={resources.map((r) => r.value).join(", ")} />
+					<input type="hidden" name="resources" value={resources.map((r) => r.value).join(",")} />
 
-					<label for="resource" class="flex flex-col gap-2 text-body-bold"
-						>Resources
+					<label for="resource" class="flex flex-col gap-2 text-body-bold">
+						<span class="flex gap-0.5">
+							Resources <span class="text-error-600" aria-hidden="true">*</span>
+						</span>
 
 						<div class="flex items-center gap-3">
 							<input
@@ -302,8 +312,10 @@
 				</div> -->
 
 				<div class="flex flex-col gap-1">
-					<label for="name" class="flex flex-col gap-1 text-body-bold"
-						>Publisher Name
+					<label for="name" class="flex flex-col gap-1 text-body-bold">
+						<span class="flex gap-0.5">
+							Publisher Name <span class="text-error-600" aria-hidden="true">*</span>
+						</span>
 
 						<input
 							type="text"
@@ -330,9 +342,8 @@
 							id="twitter"
 							name="twitter"
 							value={form?.data?.["twitter"]}
-							placeholder="Enter twitter handle"
+							placeholder="Enter twitter URL"
 							class="rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
-							required
 						/>
 					</label>
 

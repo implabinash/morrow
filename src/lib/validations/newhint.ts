@@ -48,5 +48,3 @@ export const newHintSchema = z.object({
 
 	twitter: z.url("Twitter must be a valid URL.").optional()
 });
-
-export type NewHintSchema = z.infer<typeof newHintSchema>;

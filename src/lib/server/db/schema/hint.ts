@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const hintsTable = sqliteTable("hint", {
+export const hintsTable = sqliteTable("hints", {
 	id: text("id")
 		.primaryKey()
 		.notNull()
@@ -33,8 +33,8 @@ export const hintsTable = sqliteTable("hint", {
 	resources: text("resources").notNull(),
 
 	// avatar: text("avatar"),
-	name: text("name").notNull(),
-	twitter: text("twitter"),
+	publisherName: text("publisher_name").notNull(),
+	publisherTwitter: text("publisher_twitter"),
 
 	createdAt: text("created_at")
 		.notNull()
