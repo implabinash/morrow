@@ -12,6 +12,8 @@ import {
 	Hammer
 } from "@lucide/svelte";
 
+// Update on db schema
+
 export const categories = [
 	{ id: "all", name: "All Categories", icon: Shapes },
 	{ id: "payments", name: "Payments", icon: CreditCard },

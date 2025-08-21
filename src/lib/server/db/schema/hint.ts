@@ -2,9 +2,6 @@ import { sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-import { categories } from "$lib/utils/categories";
-import { difficulties } from "$lib/utils/difficulty";
-
 export const hintsTable = sqliteTable("hint", {
 	id: text("id")
 		.primaryKey()
@@ -16,18 +13,22 @@ export const hintsTable = sqliteTable("hint", {
 	description: text("description").notNull(),
 
 	category: text("category", {
-		enum: categories.map((c) => c.id) as [
-			(typeof categories)[number]["id"],
-			...(typeof categories)[number]["id"][]
+		enum: [
+			"all",
+			"payments",
+			"defi",
+			"depin",
+			"nfts",
+			"devtools",
+			"infra",
+			"social",
+			"gaming",
+			"ai",
+			"desci"
 		]
 	}).notNull(),
 
-	difficulty: text("difficulty", {
-		enum: difficulties.map((d) => d.name) as [
-			(typeof difficulties)[number]["name"],
-			...(typeof difficulties)[number]["name"][]
-		]
-	}),
+	difficulty: text("difficulty", { enum: ["easy", "medium", "hard"] }),
 
 	resources: text("resources").notNull(),
 
