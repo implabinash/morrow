@@ -10,7 +10,6 @@ export const hintsTable = sqliteTable("hints", {
 		.$defaultFn(() => randomUUID()),
 
 	title: text("title").unique().notNull(),
-	slug: text("slug").unique().notNull(),
 	description: text("description").notNull(),
 
 	category: text("category", {
