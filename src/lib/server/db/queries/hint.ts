@@ -19,3 +19,11 @@ export const getRandomHints = async (limit: number, id: string) => {
 
 	return hints;
 };
+
+export const getAllApprovedHints = async () => {
+	const hints = await db.query.hintsTable.findMany({
+		where: eq(hintsTable.isApproved, true)
+	});
+
+	return hints;
+};

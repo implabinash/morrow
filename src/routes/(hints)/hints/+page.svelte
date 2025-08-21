@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { ChevronDown, ChevronUp } from "@lucide/svelte";
 
+	import type { PageData } from "./$types";
+
 	import { categories, type Category } from "$lib/utils/categories";
 	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
 
 	import Card from "$lib/components/Card.svelte";
 	import Seo from "$lib/components/Seo.svelte";
+
+	let { data }: { data: PageData } = $props();
 
 	let difficulty: Difficulties | undefined = $state();
 	let isDifficultyOpen: boolean = $state(false);
@@ -145,85 +149,21 @@
 	<section
 		class="grid flex-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-2 lg:overflow-y-auto xl:grid-cols-3"
 	>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="hard"
-			category="depin"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="easy"
-			category="desci"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="easy"
-			category="ai"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="medium"
-			category="gaming"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="easy"
-			category="infra"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="easy"
-			category="all"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="medium"
-			category="payments"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
-		<Card
-			name="Steve Jobs"
-			image="1"
-			thumbnail="1"
-			difficulty="hard"
-			category="devtools"
-			title="Decentralized Research Publishing"
-			description="Build a decentralized platform for academic research publishing using blockchain technology"
-			href="/hints"
-		/>
+		{#if data.hints.length !== 0}
+			{#each data.hints as hint (hint.id)}
+				<Card
+					name={hint.publisherName}
+					image="1"
+					thumbnail="1"
+					difficulty={hint.difficulty}
+					category={hint.category}
+					title={hint.title}
+					description={hint.description}
+					href={`/hints/${hint.id}`}
+				/>
+			{/each}
+		{:else}
+			<p>No more hints</p>
+		{/if}
 	</section>
 </main>
