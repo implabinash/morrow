@@ -54,9 +54,11 @@
 							class="rounded-md p-1 text-neutral-950 transition-all duration-200 hover:bg-neutral-100 active:bg-neutral-50"
 						>
 							<a
-								href={link.href}
+								href={link.live ? link.href : undefined}
 								target={link.external ? "_blank" : "_self"}
 								class="flex items-center justify-between text-subtext-color transition-all duration-100 hover:text-neutral-900"
+								class:cursor-not-allowed={!link.live}
+								aria-disabled={!link.live}
 							>
 								<div class="flex items-center gap-2">
 									<img
@@ -68,6 +70,10 @@
 
 								{#if link.external}
 									<ArrowUpRight class="text-neutral-400 transition-all duration-300" />
+								{/if}
+
+								{#if !link.live}
+									<span class="text-caption text-neutral-400">Not live</span>
 								{/if}
 							</a>
 						</li>
