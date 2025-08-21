@@ -27,10 +27,10 @@ export const hintsTable = sqliteTable("hints", {
 			"desci"
 		]
 	}).notNull(),
-	difficulty: text("difficulty", { enum: ["easy", "medium", "hard"] }),
+	difficulty: text("difficulty", { enum: ["easy", "medium", "hard"] }).notNull(),
 	resources: text("resources").notNull(),
 
-	isApproved: integer("is_approved", { mode: "boolean" }).default(false),
+	isApproved: integer("is_approved", { mode: "boolean" }).default(false).notNull(),
 
 	publisherName: text("publisher_name").notNull(),
 	publisherTwitter: text("publisher_twitter"),
