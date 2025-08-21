@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1755740927344,
-      "tag": "0000_normal_steve_rogers",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1755743504099,
-      "tag": "0001_overrated_micromax",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1755755866344,
-      "tag": "0002_melted_jean_grey",
+      "when": 1755781650959,
+      "tag": "0000_clever_thaddeus_ross",
       "breakpoints": true
     }
   ]

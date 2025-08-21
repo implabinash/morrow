@@ -3,6 +3,8 @@ import { z } from "zod/v4";
 import { categories } from "$lib/utils/categories";
 import { difficulties } from "$lib/utils/difficulty";
 
+const TWITTER_REGEX = /^https?:\/\/(x|twitter)\.com\/([a-zA-Z0-9_]{1,15})(\/)?$/;
+
 export const newHintSchema = z.object({
 	title: z
 		.string()
@@ -46,5 +48,8 @@ export const newHintSchema = z.object({
 		.min(3, "Name must be at least 3 characters long.")
 		.max(64, "Name cannot exceed 64 characters."),
 
-	twitter: z.url("Twitter must be a valid URL.").optional()
+	twitter: z
+		.url("Twitter must be a valid URL.")
+		.regex(TWITTER_REGEX, "Must be a valid Twitter/X profile URL")
+		.optional()
 });

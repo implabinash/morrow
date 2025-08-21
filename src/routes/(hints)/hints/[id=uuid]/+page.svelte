@@ -41,12 +41,12 @@
 			<img
 				src="/images/placeholders/1.webp"
 				alt={data.hint.title}
-				class="max-h-96 w-full rounded-md"
+				class="max-h-60 w-full rounded-md sm:max-h-96"
 			/>
 
 			<div class="space-y-6">
 				<div class="flex justify-between gap-4">
-					<h1 class="text-heading-1">{data.hint.title}</h1>
+					<h1 class="text-heading-2 sm:text-heading-1">{data.hint.title}</h1>
 
 					<button
 						class="flex h-fit cursor-pointer items-center gap-2 rounded-md bg-brand-600 py-2 pr-4 pl-3 text-body-bold text-white hover:bg-brand-500 active:bg-brand-600"
@@ -67,8 +67,9 @@
 						{#if data.hint.publisherTwitter}
 							<a
 								href={data.hint.publisherTwitter}
+								target="_blank"
 								class="flex items-center gap-1 text-caption-bold text-brand-600 hover:underline"
-								><Twitter size="14px" /> @johndoe_dev</a
+								><Twitter size="14px" /> @{data.hint.publisherTwitter.split("/").at(-1)}</a
 							>
 						{/if}
 					</div>
@@ -78,7 +79,7 @@
 
 		<section class="space-y-8">
 			<div class="space-y-4">
-				<h2 class="text-heading-2">Description</h2>
+				<h2 class="text-heading-3 sm:text-heading-2">Description</h2>
 
 				<div class="space-y-4 text-body">
 					{data.hint.description}
@@ -86,13 +87,13 @@
 			</div>
 
 			<div class="space-y-4">
-				<h2 class="text-heading-2">Resources</h2>
+				<h2 class="text-heading-3 sm:text-heading-2">Resources</h2>
 
 				<div class="space-y-2">
 					{#each data.hint.resources.split(",") as resource (resource)}
 						<a
 							href={resource}
-							class="flex items-center gap-1 text-body text-blue-600 hover:underline"
+							class="flex items-start gap-1 text-body text-blue-600 hover:underline"
 							><Link size="14px" class="text-default-font" />{resource}</a
 						>
 					{/each}
@@ -136,29 +137,25 @@
 		</section>
 
 		<section class="space-y-6">
-			<h2 class="text-heading-2">Related Hints</h2>
+			<h2 class="text-heading-3 sm:text-heading-2">Related Hints</h2>
 
-			<div class="grid grid-cols-2 gap-6">
-				<Card
-					name="Steve Jobs"
-					image="1"
-					thumbnail="1"
-					difficulty="hard"
-					category="depin"
-					title="Decentralized Research Publishing"
-					description="Build a decentralized platform for academic research publishing using blockchain technology"
-					href="/hints"
-				/>
-				<Card
-					name="Steve Jobs"
-					image="1"
-					thumbnail="1"
-					difficulty="easy"
-					category="desci"
-					title="Decentralized Research Publishing"
-					description="Build a decentralized platform for academic research publishing using blockchain technology"
-					href="/hints"
-				/>
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+				{#if data.relatedHint.length !== 0}
+					{#each data.relatedHint as relatedHint (relatedHint.id)}
+						<Card
+							name={relatedHint.publisherName}
+							image="1"
+							thumbnail="1"
+							difficulty={relatedHint.difficulty}
+							category={relatedHint.category}
+							title={relatedHint.title}
+							description={relatedHint.description}
+							href={`/hints/${relatedHint.id}`}
+						/>
+					{/each}
+				{:else}
+					<p class="text-body">No more hints</p>
+				{/if}
 			</div>
 		</section>
 	</Wrapper>

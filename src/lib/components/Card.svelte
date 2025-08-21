@@ -56,7 +56,7 @@
 
 	<h2 class="text-heading-3">{props.title}</h2>
 
-	<p class="text-body text-subtext-color">{props.description}</p>
+	<p class="text-body text-subtext-color">{props.description.slice(0, 79)}...</p>
 
 	<a href={props.href} class="flex items-center gap-2 text-body text-brand-700 hover:underline"
 		>Read More <ArrowRight size="16px" /></a
