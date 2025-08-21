@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
 import { randomUUID } from "crypto";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const hintsTable = sqliteTable("hints", {
 	id: text("id")
@@ -9,7 +9,8 @@ export const hintsTable = sqliteTable("hints", {
 		.unique()
 		.$defaultFn(() => randomUUID()),
 
-	title: text("title").notNull(),
+	title: text("title").unique().notNull(),
+	slug: text("slug").unique().notNull(),
 	description: text("description").notNull(),
 
 	category: text("category", {
@@ -27,12 +28,11 @@ export const hintsTable = sqliteTable("hints", {
 			"desci"
 		]
 	}).notNull(),
-
 	difficulty: text("difficulty", { enum: ["easy", "medium", "hard"] }),
-
 	resources: text("resources").notNull(),
 
-	// avatar: text("avatar"),
+	isApproved: integer("is_approved", { mode: "boolean" }).default(false),
+
 	publisherName: text("publisher_name").notNull(),
 	publisherTwitter: text("publisher_twitter"),
 
