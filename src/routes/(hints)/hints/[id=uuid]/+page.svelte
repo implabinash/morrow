@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Link, Share2, Twitter, BadgeCheck, Clock } from "@lucide/svelte";
+	import { Link, Share2, Twitter, BadgeCheck, Clock, ArrowLeft } from "@lucide/svelte";
 
 	import type { PageData } from "./$types";
 
@@ -35,9 +35,15 @@
 
 <Seo title={data.hint.title} />
 
-<main class="py-24">
+<main class="py-20 sm:py-24">
 	<Wrapper class="space-y-12">
 		<section class="space-y-8">
+			<a
+				href="/hints"
+				class="flex w-fit items-center gap-1 rounded-md border border-neutral-border py-2 pr-4 pl-3 text-caption-bold hover:bg-neutral-100 active:bg-white sm:text-body-bold"
+				><ArrowLeft size="16px" /> Back</a
+			>
+
 			<img
 				src="/images/placeholders/1.webp"
 				alt={data.hint.title}
