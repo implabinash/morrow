@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronDown, ChevronUp, Link, Plus, Trash } from "@lucide/svelte";
+	import { ArrowLeft, ChevronDown, ChevronUp, Link, Plus, Trash } from "@lucide/svelte";
 
 	import type { ActionData } from "./$types";
 	import { enhance } from "$app/forms";
@@ -63,7 +63,15 @@
 
 <Seo title="Submit a New Hint" />
 
-<main class="py-24 sm:py-36">
+<main class="py-20 sm:py-24">
+	<Wrapper class="pl-6 sm:pl-0"
+		><a
+			href="/hints"
+			class="flex w-fit items-center gap-1 rounded-md border border-neutral-border py-2 pr-4 pl-3 text-caption-bold hover:bg-neutral-100 active:bg-white sm:text-body-bold"
+			><ArrowLeft size="16px" /> Back</a
+		></Wrapper
+	>
+
 	<Wrapper class="sm:rounded-md sm:border sm:border-neutral-border sm:shadow">
 		<section class="space-y-2">
 			<h1 class="text-heading-2">Create New Hint</h1>

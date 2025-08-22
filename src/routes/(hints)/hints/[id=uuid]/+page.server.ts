@@ -13,5 +13,5 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, "Hint not found.");
 	}
 
-	return { hint, relatedHint, navTitle: hint.title };
+	return { hint, relatedHint };
 };
