@@ -7,7 +7,7 @@ const groups = [
 				href: "/get-started",
 				image: "star",
 				external: false,
-				live: false
+				live: true
 			},
 			{
 				name: "Explore Hints",
