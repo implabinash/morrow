@@ -5,9 +5,7 @@
 
 	import Header from "$lib/components/Header.svelte";
 
-	let { data, children }: LayoutProps = $props();
-
-	console.log(data);
+	let { children }: LayoutProps = $props();
 </script>
 
 <div class="app">

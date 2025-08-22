@@ -88,7 +88,9 @@
 				<h2 class="text-heading-3 sm:text-heading-2">Description</h2>
 
 				<div class="space-y-4 text-body">
-					{data.hint.description}
+					{#each data.hint.description.split(/\n/) as para (para)}
+						<p>{para}</p>
+					{/each}
 				</div>
 			</div>
 
