@@ -11,6 +11,9 @@ export const hintsTable = sqliteTable("hints", {
 
 	title: text("title").unique().notNull(),
 	description: text("description").notNull(),
+	image: integer("image")
+		.notNull()
+		.$defaultFn(() => Math.floor(Math.random() * 6)),
 
 	category: text("category", {
 		enum: [

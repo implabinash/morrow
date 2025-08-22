@@ -153,8 +153,8 @@
 			{#each data.hints as hint (hint.id)}
 				<Card
 					name={hint.publisherName}
-					image="1"
-					thumbnail="1"
+					avatar={hint.image}
+					thumbnail={(hint.image + 2) % 6}
 					difficulty={hint.difficulty}
 					category={hint.category}
 					title={hint.title}
@@ -163,7 +163,7 @@
 				/>
 			{/each}
 		{:else}
-			<p>No more hints</p>
+			<p class="text-body">No hints found</p>
 		{/if}
 	</section>
 </main>

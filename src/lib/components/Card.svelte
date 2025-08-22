@@ -7,8 +7,8 @@
 
 	type Props = {
 		name: string;
-		image: string;
-		thumbnail: string;
+		avatar: number;
+		thumbnail: number;
 		difficulty: "easy" | "medium" | "hard";
 		category: Category;
 		title: string;
@@ -22,7 +22,7 @@
 <div class="h-fit space-y-4 rounded-md border border-neutral-border bg-neutral-50 p-4">
 	<div class="flex items-center gap-2">
 		<img
-			src={`/images/placeholders/${props.image}.webp`}
+			src={`/images/placeholders/${props.avatar}.webp`}
 			alt={props.name}
 			class="size-6 rounded-full"
 		/>
@@ -31,7 +31,7 @@
 	</div>
 
 	<img
-		src={`/images/placeholders/${props.image}.webp`}
+		src={`/images/placeholders/${props.thumbnail}.webp`}
 		alt={props.title}
 		class="h-48 w-full rounded-md"
 	/>

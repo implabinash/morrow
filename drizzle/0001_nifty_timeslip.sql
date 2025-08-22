@@ -1,0 +1,1 @@
+ALTER TABLE `hints` ADD `image` integer NOT NULL;

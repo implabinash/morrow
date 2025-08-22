@@ -45,7 +45,7 @@
 			>
 
 			<img
-				src="/images/placeholders/1.webp"
+				src={`/images/placeholders/${(data.hint.image + 2) % 6}.webp`}
 				alt={data.hint.title}
 				class="max-h-60 w-full rounded-md sm:max-h-96"
 			/>
@@ -62,8 +62,8 @@
 
 				<div class="flex items-center gap-4">
 					<img
-						src="/images/placeholders/1.webp"
-						alt="publisher name"
+						src={`/images/placeholders/${data.hint.image}.webp`}
+						alt={data.hint.publisherName}
 						class="size-12 rounded-full"
 					/>
 
@@ -150,8 +150,8 @@
 					{#each data.relatedHint as relatedHint (relatedHint.id)}
 						<Card
 							name={relatedHint.publisherName}
-							image="1"
-							thumbnail="1"
+							avatar={relatedHint.image}
+							thumbnail={(relatedHint.image + 2) % 6}
 							difficulty={relatedHint.difficulty}
 							category={relatedHint.category}
 							title={relatedHint.title}
