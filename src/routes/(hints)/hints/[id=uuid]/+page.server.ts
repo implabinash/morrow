@@ -5,6 +5,7 @@ import { getHintById, getRandomHints } from "$lib/server/db/queries/hint";
 
 export const load: PageServerLoad = async ({ params }) => {
 	const id = params.id;
+
 	const hint = await getHintById(id);
 	const relatedHint = await getRandomHints(2, id);
 
@@ -12,5 +13,5 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, "Hint not found.");
 	}
 
-	return { hint, relatedHint };
+	return { hint, relatedHint, navTitle: hint.title };
 };

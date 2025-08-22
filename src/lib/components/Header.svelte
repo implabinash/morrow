@@ -3,7 +3,7 @@
 
 	import { page } from "$app/state";
 
-	let pathName = $derived(page.url.pathname.toString().replace("/", ""));
+	let pathName = $derived(page.url.pathname.toString().split("/").at(1));
 </script>
 
 <header
@@ -13,12 +13,16 @@
 		<img src="/images/logo/logo.svg" alt="Morrow" class="size-7 md:size-5" />
 
 		<p class="hidden font-semibold sm:block">
-			Morrow <span class:hidden={!pathName} class="text-body-bold text-neutral-400"
-				>/ {pathName
-					.split("-")
-					.map((p) => p.charAt(0).toUpperCase() + p.slice(1))
-					.join(" ")}</span
-			>
+			Morrow
+
+			{#if pathName}
+				<span class="text-body-bold text-neutral-400"
+					>/ {pathName
+						.split("-")
+						.map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+						.join(" ")}</span
+				>
+			{/if}
 		</p>
 	</a>
 
