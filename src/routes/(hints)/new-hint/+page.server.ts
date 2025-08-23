@@ -20,7 +20,7 @@ export const actions = {
 		const title = result.data.title.trim();
 		const description = result.data.description.trim();
 		const publisherName = result.data.name.trim();
-		const publisherTwitter = result.data.twitter?.trim() ?? "";
+		const publisherTwitter = result.data.twitter?.trim();
 
 		let hintId = "";
 

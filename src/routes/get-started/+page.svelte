@@ -17,7 +17,7 @@
 			<img
 				src="/images/placeholders/1.webp"
 				alt="add"
-				class="max-h-60 w-full rounded-md sm:max-h-96"
+				class="max-h-52 w-full rounded-md sm:max-h-96"
 			/>
 
 			<p>

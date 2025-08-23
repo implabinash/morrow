@@ -4,6 +4,6 @@
 	let { children, class: classNames }: { children: Snippet<[]>; class?: string } = $props();
 </script>
 
-<section class={`mx-auto max-w-170 space-y-12 p-6 sm:p-10 ${classNames}`}>
+<section class={`mx-auto max-w-192 space-y-12 p-6 sm:p-10 ${classNames}`}>
 	{@render children()}
 </section>

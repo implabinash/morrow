@@ -12,6 +12,8 @@
 
 	let { form }: { form: ActionData } = $props();
 
+	let description: string = $state("");
+
 	let difficulty: Difficulties | undefined = $state(
 		difficulties.find((d) => d.name === form?.data?.["difficulty"])?.name || undefined
 	);
@@ -30,6 +32,12 @@
 				.split(",")
 				.map((value, index) => ({ id: index, value: value.trim() }))
 				.filter((r) => r.value !== "");
+		}
+	});
+
+	$effect(() => {
+		if (form?.data?.["description"] && typeof form?.data?.["description"] === "string") {
+			description = form.data["description"];
 		}
 	});
 
@@ -104,7 +112,7 @@
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<label for="description" class="flex flex-col gap-1 text-body-bold"
+					<label for="description" class="relative flex flex-col gap-1 text-body-bold"
 						><span class="flex gap-0.5">
 							Description <span class="text-error-600" aria-hidden="true">*</span>
 						</span>
@@ -112,11 +120,18 @@
 						<textarea
 							id="description"
 							name="description"
-							value={form?.data?.["description"]?.toString()}
+							bind:value={description}
 							placeholder="Enter description"
-							class="min-h-24 rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
+							class="min-h-28 rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
 							required
 						></textarea>
+
+						<p
+							class="absolute end-2 bottom-2 text-caption-bold"
+							class:text-error-600={description.length >= 1024}
+						>
+							{description.length}/1024
+						</p>
 					</label>
 
 					{#if form?.error?.fieldErrors.description}
@@ -343,7 +358,9 @@
 
 				<div class="flex flex-col gap-1">
 					<label for="twitter" class="flex flex-col gap-1 text-body-bold"
-						>Twitter
+						><span class="flex gap-0.5">
+							Twitter <span class="text-error-600" aria-hidden="true">*</span>
+						</span>
 
 						<input
 							type="url"
@@ -352,6 +369,7 @@
 							value={form?.data?.["twitter"]}
 							placeholder="Enter twitter URL"
 							class="rounded-md border border-neutral-border px-2 py-1.5 placeholder:text-caption"
+							required
 						/>
 					</label>
 

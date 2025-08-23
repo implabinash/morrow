@@ -47,7 +47,7 @@
 			<img
 				src={`/images/placeholders/${(data.hint.image + 2) % 6}.webp`}
 				alt={data.hint.title}
-				class="max-h-60 w-full rounded-md sm:max-h-96"
+				class="max-h-52 w-full rounded-md sm:max-h-96"
 			/>
 
 			<div class="space-y-6">
@@ -70,14 +70,12 @@
 					<div class="space-y-1">
 						<p class="text-body-bold">{data.hint.publisherName}</p>
 
-						{#if data.hint.publisherTwitter}
-							<a
-								href={data.hint.publisherTwitter}
-								target="_blank"
-								class="flex items-center gap-1 text-caption-bold text-brand-600 hover:underline"
-								><Twitter size="14px" /> @{data.hint.publisherTwitter.split("/").at(-1)}</a
-							>
-						{/if}
+						<a
+							href={data.hint.publisherTwitter}
+							target="_blank"
+							class="flex items-center gap-1 text-caption-bold text-brand-600 hover:underline"
+							><Twitter size="14px" /> @{data.hint.publisherTwitter.split("/").at(-1)}</a
+						>
 					</div>
 				</div>
 			</div>
@@ -101,8 +99,8 @@
 					{#each data.hint.resources.split(",") as resource (resource)}
 						<a
 							href={resource}
-							class="flex items-start gap-1 text-body text-blue-600 hover:underline"
-							><Link size="14px" class="text-default-font" />{resource}</a
+							class="flex items-start gap-1 text-body break-words break-all text-blue-600 hover:underline"
+							><Link size="14px" class="min-w-4 text-default-font" />{resource}</a
 						>
 					{/each}
 				</div>

@@ -149,7 +149,7 @@
 	<section
 		class="grid flex-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-2 lg:overflow-y-auto xl:grid-cols-3"
 	>
-		{#if data.hints.length !== 0}
+		{#if data.hints && data.hints.length !== 0}
 			{#each data.hints as hint (hint.id)}
 				<Card
 					name={hint.publisherName}

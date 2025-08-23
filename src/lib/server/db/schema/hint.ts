@@ -36,7 +36,7 @@ export const hintsTable = sqliteTable("hints", {
 	isApproved: integer("is_approved", { mode: "boolean" }).default(false).notNull(),
 
 	publisherName: text("publisher_name").notNull(),
-	publisherTwitter: text("publisher_twitter"),
+	publisherTwitter: text("publisher_twitter").notNull(),
 
 	createdAt: text("created_at")
 		.notNull()

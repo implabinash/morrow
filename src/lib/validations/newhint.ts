@@ -13,7 +13,7 @@ export const newHintSchema = z.object({
 	description: z
 		.string()
 		.min(64, "Description must be at least 64 characters long.")
-		.max(512, "Description cannot exceed 512 characters."),
+		.max(1024, "Description cannot exceed 512 characters."),
 
 	category: z
 		.enum(categories.map((c) => c.id))
@@ -51,5 +51,4 @@ export const newHintSchema = z.object({
 	twitter: z
 		.url("Twitter must be a valid URL.")
 		.regex(TWITTER_REGEX, "Must be a valid Twitter/X profile URL")
-		.optional()
 });
