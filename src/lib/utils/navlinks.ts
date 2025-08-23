@@ -37,31 +37,31 @@ const groups = [
 		links: [
 			{
 				name: "About Us",
-				href: "/",
+				href: "/about",
 				image: "about",
 				external: false,
-				live: false
+				live: true
 			},
 			{
 				name: "Contact Us",
-				href: "/",
+				href: "/contact",
 				image: "contact",
 				external: false,
-				live: false
+				live: true
 			},
 			{
 				name: "FAQs",
-				href: "/",
+				href: "/faqs",
 				image: "faqs",
 				external: false,
-				live: false
+				live: true
 			},
 			{
 				name: "Support Us",
-				href: "/",
+				href: "/support-us",
 				image: "support",
 				external: false,
-				live: false
+				live: true
 			},
 			{
 				name: "Press Kit",

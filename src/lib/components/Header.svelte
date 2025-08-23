@@ -36,7 +36,7 @@
 		{/if}
 
 		<a
-			href="/"
+			href="/support-us"
 			class="flex items-center gap-2 rounded-md bg-brand-50 py-2 pr-4 pl-3 text-caption-bold text-brand-700 hover:bg-brand-100 active:bg-brand-50"
 			><Heart size="16px" /> Support Us</a
 		>
