@@ -68,9 +68,9 @@
 
 		<section class="space-y-5">
 			<div
-				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/0.webp')] bg-cover sm:h-96"
+				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/1.webp')] bg-cover sm:h-96"
 			>
-				<p class="text-7xl font-black text-white sm:text-9xl">Morrow</p>
+				<img src="/images/logo/logo.svg" alt="Morrow" class="size-40 sm:size-72" />
 			</div>
 
 			<p>
