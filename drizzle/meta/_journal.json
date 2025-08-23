@@ -15,6 +15,13 @@
       "when": 1755845545842,
       "tag": "0001_nifty_timeslip",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1755955531721,
+      "tag": "0002_fine_cerise",
+      "breakpoints": true
     }
   ]
 }

@@ -1,7 +1,59 @@
 <script lang="ts">
+	import { ApiPromise, WsProvider } from "@polkadot/api";
+
+	import { onMount } from "svelte";
+
+	import { connectAndSendDot } from "$lib/utils/wallet";
+	import { supports } from "$lib/utils/support";
+
 	import Seo from "$lib/components/Seo.svelte";
 	import Wrapper from "$lib/components/Wrapper.svelte";
-	import { supports } from "$lib/utils/support";
+
+	const TO_ADDRESS = "14g8BwU9erExNomJUDjRq4SZxRDoNYZ3kG7FEfdJipyURKiB";
+	const POLKADOT = "wss://polkadot.dotters.network";
+
+	let isLoading = $state(false);
+	let loadingAmount = $state<number | null>(null);
+
+	let error = $state("");
+	let message = $state("");
+
+	let api: ApiPromise | undefined = $state();
+
+	$effect(() => {
+		console.log("message: ", message);
+		console.log("error: ", error);
+	});
+
+	onMount(() => {
+		(async () => {
+			const wsProvider = new WsProvider(POLKADOT);
+			api = await ApiPromise.create({ provider: wsProvider });
+		})();
+	});
+
+	async function handleSendDot(amount: number) {
+		if (!api) {
+			error = "Polkadot API not ready. Please wait and try again.";
+			return;
+		}
+
+		try {
+			isLoading = true;
+			loadingAmount = amount;
+			error = "";
+			message = "";
+
+			const { result, address, name } = await connectAndSendDot(TO_ADDRESS, amount, api);
+
+			message = `Successfully sent ${amount} DOT from ${name || address}! ${result}`;
+		} catch (err) {
+			error = err.message || "Transaction failed";
+		} finally {
+			isLoading = false;
+			loadingAmount = null;
+		}
+	}
 </script>
 
 <Seo title="Get Started" />
@@ -50,12 +102,29 @@
 
 						<button
 							class="h-fit cursor-pointer rounded-md bg-brand-600 px-3 py-1.5 text-body-bold text-white hover:bg-brand-500 active:bg-brand-600"
-							>{s.amount} DOT</button
+							onclick={() => handleSendDot(s.amount)}
+							>{#if isLoading && loadingAmount === s.amount}
+								Sending...
+							{:else}
+								{s.amount} DOT
+							{/if}</button
 						>
 					</div>
 				{/each}
 			</div>
 		</section>
+
+		{#if message}
+			<div class="rounded-md border border-green-200 bg-green-50 p-4">
+				<p class="text-green-800">{message}</p>
+			</div>
+		{/if}
+
+		{#if error}
+			<div class="rounded-md border border-red-200 bg-red-50 p-4">
+				<p class="text-red-800">{error}</p>
+			</div>
+		{/if}
 
 		<section class="space-y-5">
 			<div class="space-y-2">
@@ -68,7 +137,12 @@
 				{#each [2, 5, 20, 50] as a (a)}
 					<button
 						class="h-fit cursor-pointer rounded-md bg-brand-50 px-3 py-1.5 text-body-bold text-brand-700 hover:bg-brand-100 active:bg-brand-50"
-						>{a} DOT</button
+						onclick={() => handleSendDot(a)}
+						>{#if isLoading && loadingAmount === a}
+							Sending...
+						{:else}
+							{a} DOT
+						{/if}</button
 					>
 				{/each}
 			</div>
