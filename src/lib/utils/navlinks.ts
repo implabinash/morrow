@@ -43,13 +43,6 @@ const groups = [
 				live: true
 			},
 			{
-				name: "Contact Us",
-				href: "/contact",
-				image: "contact",
-				external: false,
-				live: true
-			},
-			{
 				name: "FAQs",
 				href: "/faqs",
 				image: "faqs",
@@ -101,6 +94,13 @@ const groups = [
 	{
 		title: "Socials",
 		links: [
+			{
+				name: "Email",
+				href: "mailto:implabinash@gmail.com",
+				image: "mail",
+				external: true,
+				live: true
+			},
 			{
 				name: "Twitter",
 				href: "https://x.com/implabinash",

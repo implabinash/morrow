@@ -64,7 +64,7 @@
 									<img
 										src={`/images/icons/${link.image}.webp`}
 										alt="Buld"
-										class={`${link.external ? "size-7" : "size-8"}`}
+										class={`size-8 ${link.external && link.image !== "mail" ? " p-0.5" : ""}`}
 									/>{link.name}
 								</div>
 
