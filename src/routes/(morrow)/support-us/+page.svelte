@@ -74,12 +74,18 @@
 			</div>
 
 			<p>
-				This is an example page. Framer is an interactive design tool for websites and prototyping.
-				It excels at building landing pages, marketing sites, online campaigns, and much more. It
-				supports you in every part of the design process, from creating mockups to interactive
-				prototypes, but its unique strength is the ability to publish directly from a freeform
-				canvas. It’s incredibly fast, expressive, and free to try.
+				<strong>Morrow is a home for builders on Polkadot.</strong> It started as a small idea: a place
+				where anyone can share hints, discover useful tools, and follow roadmaps to bring new projects
+				to life.
 			</p>
+
+			<p>
+				I’m building this solo, as an indie developer, because I believe Polkadot needs more open,
+				community-driven resources. Morrow is meant to be that little spark, a hint from tomorrow
+				that helps founders, hackers, and dreamers turn ideas into reality.
+			</p>
+
+			<p>Your support keeps this alive, growing, and free for everyone.</p>
 		</section>
 
 		<section class="space-y-5">
@@ -115,8 +121,12 @@
 		</section>
 
 		{#if message}
-			<div class="rounded-md border border-green-200 bg-green-50 p-4">
+			<div class="space-y-2 rounded-md border border-green-200 bg-green-50 p-4 text-body">
 				<p class="text-green-800">{message}</p>
+
+				<p class="text-green-800">
+					Thank you for believing in our mission to make building on Polkadot easier for everyone!
+				</p>
 			</div>
 		{/if}
 
@@ -134,7 +144,7 @@
 			</div>
 
 			<div class="space-y-3 space-x-3 sm:space-y-0">
-				{#each [2, 5, 20, 50] as a (a)}
+				{#each [3, 20, 50, 100] as a (a)}
 					<button
 						class="h-fit cursor-pointer rounded-md bg-brand-50 px-3 py-1.5 text-body-bold text-brand-700 hover:bg-brand-100 active:bg-brand-50"
 						onclick={() => handleSendDot(a)}
@@ -146,24 +156,6 @@
 					>
 				{/each}
 			</div>
-		</section>
-
-		<section class="space-y-5">
-			<h2 class="text-2xl font-semibold">Why Support Morrow?</h2>
-
-			<img
-				src="/images/placeholders/1.webp"
-				alt="add"
-				class="max-h-60 w-full rounded-md sm:max-h-96"
-			/>
-
-			<p>
-				This is an example page. Framer is an interactive design tool for websites and prototyping.
-				It excels at building landing pages, marketing sites, online campaigns, and much more. It
-				supports you in every part of the design process, from creating mockups to interactive
-				prototypes, but its unique strength is the ability to publish directly from a freeform
-				canvas. It’s incredibly fast, expressive, and free to try.
-			</p>
 		</section>
 	</Wrapper>
 </main>
