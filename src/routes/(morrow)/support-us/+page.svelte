@@ -56,12 +56,12 @@
 	}
 </script>
 
-<Seo title="Get Started" />
+<Seo title="Support Us" />
 
 <main class="py-20 sm:py-24">
 	<Wrapper class="space-y-10">
 		<section class="space-y-5">
-			<img src="/images/icons/support.webp" alt="Get Started" class="size-12" />
+			<img src="/images/icons/support.webp" alt="Support Us" class="size-16" />
 
 			<h1 class="text-4xl font-semibold">Support Us</h1>
 		</section>

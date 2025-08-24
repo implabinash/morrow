@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Seo from "$lib/components/Seo.svelte";
 	import Wrapper from "$lib/components/Wrapper.svelte";
-	import Badge from "$lib/components/Badge.svelte";
 </script>
 
 <Seo title="Get Started" />
@@ -9,7 +8,7 @@
 <main class="py-20 sm:py-24">
 	<Wrapper class="space-y-10">
 		<section class="space-y-5">
-			<img src="/images/icons/star.webp" alt="Get Started" class="size-12" />
+			<img src="/images/icons/star.webp" alt="Get Started" class="size-16" />
 
 			<h1 class="text-4xl font-semibold">Get Started</h1>
 		</section>
@@ -34,7 +33,7 @@
 			<h2 class="text-2xl font-semibold">Explore Hints</h2>
 
 			<div
-				class="flex h-60 w-full items-center justify-center rounded-md bg-[url('/images/placeholders/1.webp')] bg-cover sm:h-96"
+				class="flex h-60 w-full items-center justify-center rounded-md bg-[url('/images/placeholders/4.webp')] bg-cover sm:h-96"
 			>
 				<img
 					src="/images/dummy/1.webp"
@@ -57,7 +56,7 @@
 			</h2>
 
 			<div
-				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/1.webp')] bg-cover sm:h-96"
+				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/3.webp')] bg-cover sm:h-96"
 			>
 				<img src="/images/icons/soon.webp" alt="Comming soon" class="size-40 sm:size-72" />
 			</div>
@@ -76,7 +75,7 @@
 			</h2>
 
 			<div
-				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/1.webp')] bg-cover sm:h-96"
+				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/5.webp')] bg-cover sm:h-96"
 			>
 				<img src="/images/icons/soon.webp" alt="Comming soon" class="size-40 sm:size-72" />
 			</div>

@@ -17,10 +17,12 @@
 
 			{#if pathName}
 				<span class="text-body-bold text-neutral-400"
-					>/ {pathName
-						.split("-")
-						.map((p) => p.charAt(0).toUpperCase() + p.slice(1))
-						.join(" ")}</span
+					>/ {pathName === "faqs"
+						? "FAQs"
+						: pathName
+								.split("-")
+								.map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+								.join(" ")}</span
 				>
 			{/if}
 		</p>

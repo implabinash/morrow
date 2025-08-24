@@ -3,22 +3,22 @@
 	import Wrapper from "$lib/components/Wrapper.svelte";
 </script>
 
-<Seo title="Get Started" />
+<Seo title="FAQs" />
 
 <main class="py-20 sm:py-24">
 	<Wrapper class="space-y-10">
 		<section class="space-y-5">
-			<img src="/images/icons/faqs.webp" alt="Get Started" class="size-12" />
+			<img src="/images/icons/faqs.webp" alt="FAQs" class="size-16" />
 
 			<h1 class="text-4xl font-semibold">FAQs</h1>
 		</section>
 
 		<section class="space-y-5">
-			<img
-				src="/images/placeholders/1.webp"
-				alt="add"
-				class="max-h-60 w-full rounded-md sm:max-h-96"
-			/>
+			<div
+				class="flex h-60 w-full flex-col items-center justify-center gap-4 rounded-md bg-[url('/images/placeholders/1.webp')] bg-cover sm:h-96"
+			>
+				<img src="/images/logo/logo.svg" alt="Morrow" class="size-40 sm:size-72" />
+			</div>
 
 			<p>
 				This is an example page. Framer is an interactive design tool for websites and prototyping.
