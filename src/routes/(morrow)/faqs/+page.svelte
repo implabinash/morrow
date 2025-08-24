@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Seo from "$lib/components/Seo.svelte";
 	import Wrapper from "$lib/components/Wrapper.svelte";
+	import { faqs } from "$lib/utils/faqs";
 </script>
 
 <Seo title="FAQs" />
@@ -29,22 +30,20 @@
 			</p>
 		</section>
 
-		<section class="space-y-5">
-			<h2 class="text-2xl font-semibold">Explore Hints</h2>
+		<section class="space-y-7">
+			<h2 class="text-2xl font-semibold">Frequently Asked Questions</h2>
 
-			<img
-				src="/images/placeholders/1.webp"
-				alt="add"
-				class="max-h-60 w-full rounded-md sm:max-h-96"
-			/>
+			<div class="space-y-5">
+				{#each faqs as f (f.q)}
+					<div class="space-y-2">
+						<p class="font-semibold">{f.q}</p>
 
-			<p>
-				This is an example page. Framer is an interactive design tool for websites and prototyping.
-				It excels at building landing pages, marketing sites, online campaigns, and much more. It
-				supports you in every part of the design process, from creating mockups to interactive
-				prototypes, but its unique strength is the ability to publish directly from a freeform
-				canvas. It’s incredibly fast, expressive, and free to try.
-			</p>
+						<p class="text-subtext-color">
+							{f.a}
+						</p>
+					</div>
+				{/each}
+			</div>
 		</section>
 	</Wrapper>
 </main>
