@@ -37,7 +37,7 @@ export async function sendDot(
 	api: ApiPromise | undefined,
 	signer: Signer | undefined
 ) {
-	const amount = BigInt(amountDot * 10 ** 12);
+	const amount = BigInt(amountDot * 10 ** 10);
 
 	return new Promise<string>((resolve, reject) => {
 		const tx = api?.tx.balances.transferKeepAlive(toAddress, amount);
