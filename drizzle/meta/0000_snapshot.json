@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "5a8e389c-0b29-4977-a999-8bf4f0a6b06f",
+  "id": "8e7e04a4-1976-4a50-8397-4f1a44911537",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "hints": {
@@ -24,6 +24,13 @@
         "description": {
           "name": "description",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "image": {
+          "name": "image",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -68,7 +75,7 @@
           "name": "publisher_twitter",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "created_at": {

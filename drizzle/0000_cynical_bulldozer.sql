@@ -2,12 +2,13 @@ CREATE TABLE `hints` (
 	`id` text PRIMARY KEY NOT NULL,
 	`title` text NOT NULL,
 	`description` text NOT NULL,
+	`image` integer NOT NULL,
 	`category` text NOT NULL,
 	`difficulty` text NOT NULL,
 	`resources` text NOT NULL,
 	`is_approved` integer DEFAULT false NOT NULL,
 	`publisher_name` text NOT NULL,
-	`publisher_twitter` text,
+	`publisher_twitter` text NOT NULL,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );

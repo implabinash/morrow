@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1755781650959,
-      "tag": "0000_clever_thaddeus_ross",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1755845545842,
-      "tag": "0001_nifty_timeslip",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1755955531721,
-      "tag": "0002_fine_cerise",
+      "when": 1756033597129,
+      "tag": "0000_cynical_bulldozer",
       "breakpoints": true
     }
   ]
