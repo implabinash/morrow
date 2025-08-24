@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { sql, type InferSelectModel } from "drizzle-orm";
 import { randomUUID } from "crypto";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
@@ -45,3 +45,5 @@ export const hintsTable = sqliteTable("hints", {
 		.notNull()
 		.default(sql`CURRENT_TIMESTAMP`)
 });
+
+export type Hint = InferSelectModel<typeof hintsTable>;

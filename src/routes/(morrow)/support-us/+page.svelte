@@ -6,8 +6,8 @@
 	import { connectAndSendDot } from "$lib/utils/wallet";
 	import { supports } from "$lib/utils/support";
 
-	import Seo from "$lib/components/Seo.svelte";
 	import Wrapper from "$lib/components/Wrapper.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 
 	const TO_ADDRESS = "14g8BwU9erExNomJUDjRq4SZxRDoNYZ3kG7FEfdJipyURKiB";
 	const POLKADOT = "wss://polkadot.dotters.network";

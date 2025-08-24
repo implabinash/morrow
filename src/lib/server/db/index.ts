@@ -1,6 +1,8 @@
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
+
 import { DATABASE_URL, DATABASE_AUTH_TOKEN } from "$env/static/private";
+
 import { hintsTable } from "./schema/hint";
 
 if (!DATABASE_URL) throw new Error("DATABASE_URL is not set");

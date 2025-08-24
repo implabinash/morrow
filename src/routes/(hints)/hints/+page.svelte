@@ -3,8 +3,9 @@
 
 	import type { PageData } from "./$types";
 
-	import { categories, type Category } from "$lib/utils/categories";
 	import { difficulties, type Difficulties } from "$lib/utils/difficulty";
+	import { categories, type Category } from "$lib/utils/categories";
+	import type { Hint } from "$lib/server/db/schema/hint";
 
 	import Card from "$lib/components/Card.svelte";
 	import Seo from "$lib/components/Seo.svelte";
@@ -16,6 +17,24 @@
 
 	let category: Category = $state("all");
 	let isCategoryOpen: boolean = $state(false);
+
+	let hints: Hint[] | undefined = $derived(data.hints);
+
+	$effect(() => {
+		hints = data.hints?.filter((h) => {
+			const matchesCategory = category === "all" || h.category === category;
+			const matchesDifficulty = !difficulty || h.difficulty === difficulty;
+			return matchesCategory && matchesDifficulty;
+		});
+	});
+
+	const handleDifficulty = (d: Difficulties) => {
+		difficulty = difficulty === d ? undefined : d;
+	};
+
+	const handleCategory = (c: Category) => {
+		category = category === c ? "all" : c;
+	};
 </script>
 
 <Seo title="Explore Hints" />
@@ -32,7 +51,7 @@
 					<button
 						class={`flex cursor-pointer items-center gap-2 rounded-md px-3 py-1.5 hover:text-black ${difficulty === d.name ? "bg-white text-black" : ""}`}
 						onclick={() => {
-							difficulty = difficulty === d.name ? undefined : d.name;
+							handleDifficulty(d.name);
 						}}><d.icon size="14px" /> {d.name.charAt(0).toUpperCase() + d.name.slice(1)}</button
 					>
 				{/each}
@@ -70,7 +89,7 @@
 								<button
 									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${difficulty === d.name ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 									onclick={() => {
-										difficulty = difficulty === d.name ? undefined : d.name;
+										handleDifficulty(d.name);
 										isDifficultyOpen = !isDifficultyOpen;
 									}}
 								>
@@ -93,7 +112,7 @@
 						<button
 							class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-body hover:bg-neutral-100 ${category === c.id ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 							onclick={() => {
-								category = category === c.id ? "all" : c.id;
+								handleCategory(c.id);
 							}}
 						>
 							<c.icon size="16px" />
@@ -131,7 +150,7 @@
 								<button
 									class={`flex h-full w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 ${category === c.id ? "bg-neutral-100 text-black" : ""} hover:text-black active:bg-neutral-50`}
 									onclick={() => {
-										category = category === c.id ? "all" : c.id;
+										handleCategory(c.id);
 										isCategoryOpen = !isCategoryOpen;
 									}}
 								>
@@ -149,8 +168,8 @@
 	<section
 		class="grid flex-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-2 lg:overflow-y-auto xl:grid-cols-3"
 	>
-		{#if data.hints && data.hints.length !== 0}
-			{#each data.hints as hint (hint.id)}
+		{#if hints && hints.length !== 0}
+			{#each hints as hint (hint.id)}
 				<Card
 					name={hint.publisherName}
 					avatar={hint.image}

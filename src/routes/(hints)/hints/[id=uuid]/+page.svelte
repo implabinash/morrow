@@ -6,10 +6,10 @@
 	import { difficulties } from "$lib/utils/difficulty";
 	import { categories } from "$lib/utils/categories";
 
-	import Seo from "$lib/components/Seo.svelte";
 	import Wrapper from "$lib/components/Wrapper.svelte";
 	import Badge from "$lib/components/Badge.svelte";
 	import Card from "$lib/components/Card.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 
 	let { data }: { data: PageData } = $props();
 
@@ -99,6 +99,7 @@
 					{#each data.hint.resources.split(",") as resource (resource)}
 						<a
 							href={resource}
+							target="_blank"
 							class="flex items-start gap-1 text-body break-words break-all text-blue-600 hover:underline"
 							><Link size="14px" class="min-w-4 text-default-font" />{resource}</a
 						>

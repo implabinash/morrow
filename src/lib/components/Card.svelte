@@ -2,8 +2,9 @@
 	import { ArrowRight } from "@lucide/svelte";
 
 	import { categories, type Category } from "$lib/utils/categories";
-	import Badge from "./Badge.svelte";
 	import { difficulties } from "$lib/utils/difficulty";
+
+	import Badge from "./Badge.svelte";
 
 	type Props = {
 		name: string;

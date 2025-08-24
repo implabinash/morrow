@@ -1,7 +1,8 @@
 <script lang="ts">
-	import Seo from "$lib/components/Seo.svelte";
-	import Wrapper from "$lib/components/Wrapper.svelte";
 	import { faqs } from "$lib/utils/faqs";
+
+	import Wrapper from "$lib/components/Wrapper.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 </script>
 
 <Seo title="FAQs" />
