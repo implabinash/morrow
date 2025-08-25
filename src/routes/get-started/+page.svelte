@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { MoveRight } from "@lucide/svelte";
+
 	import Wrapper from "$lib/components/Wrapper.svelte";
+	import Badge from "$lib/components/Badge.svelte";
 	import Seo from "$lib/components/Seo.svelte";
 </script>
 
@@ -48,11 +51,17 @@
 				add your own to inspire others. Whether it’s a new product idea, a missing tool, or just an
 				experiment worth trying, hints are the foundation of Morrow.
 			</p>
+
+			<a
+				href="/hints"
+				class="flex w-fit cursor-pointer items-center gap-2 rounded-md bg-brand-50 px-3 py-1.5 text-body-bold text-brand-700 hover:bg-brand-100 active:bg-brand-50"
+				>Explore Hints <MoveRight size="16px" /></a
+			>
 		</section>
 
 		<section class="space-y-5">
-			<h2 class="flex gap-1 text-2xl font-semibold">
-				Discover Tools <div class="text-caption-bold text-success-500">Coming</div>
+			<h2 class="flex items-center gap-2 text-2xl font-semibold">
+				Discover Tools <Badge type="success" text="Comming Soon" />
 			</h2>
 
 			<div
@@ -70,8 +79,8 @@
 		</section>
 
 		<section class="space-y-5">
-			<h2 class="flex gap-1 text-2xl font-semibold">
-				Roadmaps <div class="text-caption-bold text-success-500">Coming</div>
+			<h2 class="flex items-center gap-2 text-2xl font-semibold">
+				Roadmaps <Badge type="success" text="Comming Soon" />
 			</h2>
 
 			<div
