@@ -1,4 +1,4 @@
-export const faqs = [
+export const generalFAQs = [
 	{
 		q: "What is Morrow?",
 		a: "Morrow is a home for builders on Polkadot. It started as a small idea: a place where anyone can share hints, discover useful tools, and follow roadmaps to bring new projects to life."
@@ -38,5 +38,20 @@ export const faqs = [
 	{
 		q: "Can I contribute even if I’m new to building?",
 		a: "Absolutely! Morrow is for everyone, from beginners learning the ropes to experienced developers. Every contribution counts."
+	}
+];
+
+export const supportFAQs = [
+	{
+		q: "How are the funds used?",
+		a: "All donations go directly toward platform development, hosting costs, design work, and expanding our resource library to better serve the Polkadot builder community."
+	},
+	{
+		q: "Is this a one-time donation or subscription?",
+		a: "All contributions are one-time donations. You can choose to support us again anytime, but there's no recurring charge or subscription."
+	},
+	{
+		q: "What if I want to contribute in other ways?",
+		a: "Beyond financial support, you can contribute by submitting project ideas, sharing resources, or helping other builders in our community. We value all forms of contribution."
 	}
 ];

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { faqs } from "$lib/utils/faqs";
+	import { generalFAQs } from "$lib/utils/faqs";
 
 	import Wrapper from "$lib/components/Wrapper.svelte";
 	import Seo from "$lib/components/Seo.svelte";
@@ -35,7 +35,7 @@
 			<h2 class="text-2xl font-semibold">Frequently Asked Questions</h2>
 
 			<div class="space-y-5">
-				{#each faqs as f (f.q)}
+				{#each generalFAQs as f (f.q)}
 					<div class="space-y-2">
 						<p class="font-semibold">{f.q}</p>
 

@@ -5,6 +5,7 @@
 
 	import { connectAndSendDot } from "$lib/utils/wallet";
 	import { supports } from "$lib/utils/support";
+	import { supportFAQs } from "$lib/utils/faqs";
 
 	import Wrapper from "$lib/components/Wrapper.svelte";
 	import Seo from "$lib/components/Seo.svelte";
@@ -156,6 +157,59 @@
 					>
 				{/each}
 			</div>
+		</section>
+
+		<section class="space-y-5">
+			<h2 class="flex items-center gap-2 text-2xl font-semibold">Why Support Morrow?</h2>
+
+			<div
+				class="flex h-60 w-full items-center justify-center rounded-md bg-[url('/images/placeholders/3.webp')] bg-cover sm:h-96"
+			>
+				<div class="grid w-full grid-cols-3 place-items-center">
+					<img src="/images/icons/bulb.webp" alt="Hints" class="size-24 sm:size-56" />
+					<img src="/images/icons/tools.webp" alt="Tools" class="size-24 sm:size-56" />
+					<img src="/images/icons/map.webp" alt="Roadmap" class="size-24 sm:size-56" />
+				</div>
+			</div>
+
+			<p>
+				Morrow is more than just an idea bank; it's the foundation for the next generation of
+				Polkadot builders. With your support, we can expand our tools, guides, and resources to help
+				turn brilliant ideas into successful projects that strengthen the entire ecosystem.
+			</p>
+
+			<p>
+				Every DOT token you contribute helps us maintain our platform, develop new features, and
+				support the growing community of builders who are shaping the future of Web3 on Polkadot.
+			</p>
+		</section>
+
+		<section class="space-y-7">
+			<h2 class="text-2xl font-semibold">Frequently Asked Questions</h2>
+
+			<div class="space-y-5">
+				{#each supportFAQs as f (f.q)}
+					<div class="space-y-2">
+						<p class="font-semibold">{f.q}</p>
+
+						<p class="text-subtext-color">
+							{f.a}
+						</p>
+					</div>
+				{/each}
+			</div>
+
+			<p>
+				If you have any other questions or need help, feel free to reach out to us anytime at <a
+					href="mailto:implabinash@gmail.com"
+					target="_blank"
+					class="text-brand-600 hover:underline">implabinash@gmail.com</a
+				>
+				or connect with us on
+				<a href="https://x.com/implabinash" target="_blank" class="text-brand-600 hover:underline"
+					>Twitter</a
+				>. We’re always happy to hear from you.
+			</p>
 		</section>
 	</Wrapper>
 </main>
