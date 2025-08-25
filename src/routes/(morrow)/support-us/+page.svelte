@@ -208,8 +208,10 @@
 				or connect with us on
 				<a href="https://x.com/implabinash" target="_blank" class="text-brand-600 hover:underline"
 					>Twitter</a
-				>. We’re always happy to hear from you.
+				>.
 			</p>
+
+			<p>We’re always happy to hear from you.</p>
 		</section>
 	</Wrapper>
 </main>

@@ -13,11 +13,15 @@ export const generalFAQs = [
 	},
 	{
 		q: "What kind of hints can I share?",
-		a: "Hints should be real, problem-solving product ideas, not just small weekend projects. The goal is to share ideas that can help the ecosystem grow, solve real challenges, and inspire others to build meaningful products."
+		a: "Hints should be real, problem-solving product ideas that can make a meaningful impact on the ecosystem. They’re not just small weekend projects; they should be ideas that could grow into tools, startups, or solutions that address real challenges."
 	},
 	{
-		q: "What kind of tools can I share?",
-		a: "Tools are libraries, SDKs, frameworks, or other developer resources that make it easier to build real products and ideas."
+		q: "What are tools on Morrow?",
+		a: "Tools are libraries, SDKs, frameworks, or resources that help builders bring their ideas to life. You’ll soon be able to share and discover them directly on Morrow."
+	},
+	{
+		q: "What are roadmaps?",
+		a: "Roadmaps are step-by-step learning guides designed to help you navigate complex topics in development. They’ll be released in the next version of Morrow, making it easier for you to stay on track without feeling lost."
 	},
 	{
 		q: "Why do submissions need to be reviewed?",
@@ -28,12 +32,16 @@ export const generalFAQs = [
 		a: "No, Morrow is free to use. Our goal is to make it easier for developers and builders to share, learn, and grow together."
 	},
 	{
-		q: "How can I support Morrow?",
-		a: "You can support us by contributing hints, tools, or by sending DOT tokens to help cover costs like hosting, domains, and infrastructure."
+		q: "Can I update or edit my hint after publishing?",
+		a: "No. Currently, updates aren’t available. But, it is on our to-do list to realise in the next version."
 	},
 	{
-		q: "How are the funds used?",
-		a: "All donations go directly toward platform development, hosting costs, design work, and expanding our resource library to better serve the Polkadot builder community."
+		q: "How can I support Morrow?",
+		a: [
+			"You can support us by contributing hints, tools, or by sending DOT tokens to help cover costs like hosting, domains, and infrastructure. For more info, check out our ",
+			{ link: "/support-us", text: "support us" },
+			" page."
+		]
 	},
 	{
 		q: "Can I contribute even if I’m new to building?",

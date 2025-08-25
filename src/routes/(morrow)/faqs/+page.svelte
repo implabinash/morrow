@@ -23,11 +23,10 @@
 			</div>
 
 			<p>
-				This is an example page. Framer is an interactive design tool for websites and prototyping.
-				It excels at building landing pages, marketing sites, online campaigns, and much more. It
-				supports you in every part of the design process, from creating mockups to interactive
-				prototypes, but its unique strength is the ability to publish directly from a freeform
-				canvas. It’s incredibly fast, expressive, and free to try.
+				At Morrow, we want to make sharing and exploring ideas as smooth as possible. Whether it’s a
+				real product idea, a useful tool, or a roadmap to guide your learning, everything you find
+				here is curated with care. To keep the platform valuable and trustworthy, we review every
+				submission before it goes live, so you can expect quality content you can rely on.
 			</p>
 		</section>
 
@@ -40,11 +39,31 @@
 						<p class="font-semibold">{f.q}</p>
 
 						<p class="text-subtext-color">
-							{f.a}
+							{#each f.a as part (part)}
+								{#if typeof part === "string"}
+									{part}
+								{:else}
+									<a href={part.link} class="text-brand-600 hover:underline">{part.text}</a>
+								{/if}
+							{/each}
 						</p>
 					</div>
 				{/each}
 			</div>
+
+			<p>
+				If you have any other questions or need help, feel free to reach out to us anytime at <a
+					href="mailto:implabinash@gmail.com"
+					target="_blank"
+					class="text-brand-600 hover:underline">implabinash@gmail.com</a
+				>
+				or connect with us on
+				<a href="https://x.com/implabinash" target="_blank" class="text-brand-600 hover:underline"
+					>Twitter</a
+				>.
+			</p>
+
+			<p>We’re always happy to hear from you.</p>
 		</section>
 	</Wrapper>
 </main>
