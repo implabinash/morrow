@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { injectAnalytics } from "@vercel/analytics/sveltekit";
+	import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
 
 	import "../app.css";
 
@@ -10,6 +11,7 @@
 	let { children }: LayoutProps = $props();
 
 	injectAnalytics();
+	injectSpeedInsights();
 </script>
 
 <div class="app">
